@@ -38,14 +38,14 @@ function renderList() {
   const root = $('manual-list'); root.replaceChildren();
   $('visible-count').textContent = `${candidates.length} 篇`;
   $('list-caption').textContent = q ? '搜索结果' : filter === 'archived' ? '归档参考手册' : filter === 'all' ? '全部手册' : '现用参考手册';
-  if (!candidates.length) {const msg = document.createElement('div');msg.className='loading-note';msg.textContent=manuals.length?'未找到匹配的手册。':'暂无 PDF 文件，执行一次性导入后即可使用。';root.append(msg);return;}
+  if (!candidates.length) {const msg = document.createElement('div');msg.className='loading-note';msg.textContent=manuals.length?'未找到匹配的手册。':'暂无手册目录。';root.append(msg);return;}
   for (const m of candidates) {
     const button = document.createElement('button');button.type='button';button.className='manual-item'+(selected?.id===m.id?' selected':'')+(!m.available?' unavailable':'');
     button.setAttribute('aria-current', selected?.id===m.id?'page':'false');
     const icon = document.createElement('span');icon.className='manual-icon';icon.textContent='PDF';
     const body=document.createElement('span');body.className='manual-content';
     const title=document.createElement('div');title.className='manual-label';title.textContent=labelOf(m);
-    const meta=document.createElement('div');meta.className='manual-subtitle';meta.textContent=m.available?`${shortSize(m.size)}  ·  ${m.archived?'归档':'参考手册'}`:'尚未导入 · '+shortSize(m.size);
+    const meta=document.createElement('div');meta.className='manual-subtitle';meta.textContent=m.available?`${shortSize(m.size)}  ·  ${m.archived?'归档':'参考手册'}`:'尚未拷贝 · '+shortSize(m.size);
     const arrow=document.createElement('span');arrow.className='manual-arrow';arrow.textContent='›';
     body.append(title,meta);button.append(icon,body,arrow);
     button.addEventListener('click',()=>selectManual(m.id,1));root.append(button);
@@ -87,8 +87,8 @@ async function initialize(){
     $('active-count').textContent=manuals.filter(m=>!m.archived).length;
     $('archived-count').textContent=manuals.filter(m=>m.archived).length;
     const ready=manuals.filter(m=>m.available).length;
-    $('sync-status').textContent=`${ready} / ${manuals.length} 份 · 一次性拷贝`;
-    if (!ready) {$('empty-message').textContent='网页已建立，PDF 正等待一次性导入。请查看仓库 README 中的导入步骤。';}
+    $('sync-status').textContent=`${ready} / ${manuals.length} 份 · 本地 PDF`;
+    if (!ready) {$('empty-message').textContent='网页已建立，PDF 文件尚未拷贝到仓库。';}
     const p=new URLSearchParams(location.search);
     const id=p.get('manual');
     if(id)selectManual(id,Number(p.get('page'))||1);

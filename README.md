@@ -1,36 +1,44 @@
 # MCU PDF Reader
 
-Static GitHub Pages reader for MCU reference manuals. Source: `IoTS-P/LibAFL-Emulator`, branch `gemu-v2`, under `rule_generator/Manuals/`.
+A lightweight GitHub Pages reader for MCU reference manuals copied from the `IoTS-P/LibAFL-Emulator` repository (`gemu-v2` branch).
 
-- Site (after enabling Pages): https://shandianchengzi.github.io/mcu-pdf-reader/
-- GitHub Actions → **Deploy MCU PDF Reader**: publishes the static website in `site/` after a push to `main`.
-- GitHub Actions → **One-time copy of LibAFL Emulator PDFs**: explicitly triggered once to copy **22 PDFs** (17 active, 5 archived, ~293 MB) to `site/pdfs/`; it does **not** run on a schedule or when the source changes.
+**Website:** https://shandianchengzi.github.io/mcu-pdf-reader/
 
-## One-time PDF copy
+The site provides chip-name search, active/archived filters, embedded PDF viewing, page navigation, direct PDF links and downloads. It does not load PDFs from the private source repository at runtime.
 
-`LibAFL-Emulator` is a **private GitHub repository**. Although the reference manuals can be redistributed as original vendor documents where their licenses allow it, a GitHub Actions runner cannot read that private Git repository with the public destination repository's default `GITHUB_TOKEN`.
+## Manual inventory
 
-1. Create a fine-grained GitHub Personal Access Token authorized to **read `IoTS-P/LibAFL-Emulator`**, with **Contents: Read-only**. If an organization approval or SSO authorization is required, complete it there.
-2. In `mcu-pdf-reader` → **Settings → Secrets and variables → Actions**, create the repository secret `MANUALS_SOURCE_TOKEN` and paste the token. Do not commit or expose the token in the site.
-3. In **Actions → One-time copy of LibAFL Emulator PDFs → Run workflow** (branch `main`), run the import manually. The workflow checks out the actual source repository, copies each original PDF byte for byte, validates size, PDF header and Git blob SHA-1 against the frozen inventory in `source-manuals.tsv`, and pushes the PDFs to this repository in one commit.
-4. In **Settings → Pages → Build and deployment**, select **GitHub Actions** as the source. The `Deploy MCU PDF Reader` workflow runs after the import push. You may also invoke it manually.
-5. Remove `MANUALS_SOURCE_TOKEN` from Secrets after the successful one-time import if you no longer need it.
+`source-manuals.tsv` records the 22 PDF files (17 active, 5 archived) found at source commit `987fafaa42f9937006d3e9226134f5c78dc5aeb6`, including exact sizes and Git blob hashes. Files go into `site/pdfs/`, preserving the original subdirectories. `site/manuals.json` marks each document as available only after its original bytes have been copied and verified.
 
-All 22 PDFs and their original sizes/hashes were enumerated from `gemu-v2` before this initial import. There is **no automated synchronization**. New changes to the source repository are not propagated here.
+**Current status:** 1 PDF has been copied and verified; the remaining 21 entries are catalogued but unavailable. The website displays the actual availability instead of broken file links.
 
-## Reading
+## Copy from a local checkout
 
-Visit https://shandianchengzi.github.io/mcu-pdf-reader/ . The sidebar has chip search and active/archived filters. Select a manual to open the local same-origin PDF with the browser's PDF viewer. The reader provides a page number jump, a shareable URL, a standalone window, and a download link. `Ctrl+F`, outline navigation, zoom and print are provided by your browser's PDF viewer. Mobile browsers that do not embed PDFs can open the file in a new window or download it.
-
-The site intentionally has no build dependencies, backend, external CDN, or runtime access to GitHub APIs. PDFs are stored as ordinary Git blobs (no LFS pointers).
-
-## Local validation
+For a machine with network access and read permission to the source repository:
 
 ```bash
-python scripts/import_manuals.py --verify-only
+git clone https://github.com/shandianchengzi/mcu-pdf-reader.git
+git clone --filter=blob:none --no-checkout https://github.com/IoTS-P/LibAFL-Emulator.git
+git -C LibAFL-Emulator sparse-checkout set rule_generator/Manuals
+git -C LibAFL-Emulator checkout 987fafaa42f9937006d3e9226134f5c78dc5aeb6
+
+python3 mcu-pdf-reader/scripts/import_manuals.py --source LibAFL-Emulator --target mcu-pdf-reader/site
+python3 mcu-pdf-reader/scripts/import_manuals.py --target mcu-pdf-reader/site --verify-only
+
+cd mcu-pdf-reader
+git add site/pdfs site/manuals.json
+git commit -m "Copy MCU manuals from LibAFL Emulator"
+git push origin main
+```
+
+The Python utility simply copies PDF files from the local source checkout, validates the source inventory's exact file size, Git blob SHA and PDF signature, and updates `manuals.json`. It does not contact GitHub or run on a schedule. No bulk-copy GitHub Actions workflow, secret, or source-repository access token is configured.
+
+To run the reader locally:
+
+```bash
 python3 -m http.server --directory site 8000
 ```
 
-The inventory in `site/manuals.json` initially marks files unavailable until copied. Importing rewrites it with verified availability. `scripts/import_manuals.py` refuses missing/mismatching PDFs and preserves source subdirectories, including `archived/`.
+The existing `Deploy MCU PDF Reader` GitHub Actions workflow deploys `site/` after a push to `main`.
 
-> Third-party semiconductor manuals retain their respective publisher copyrights and terms. This reader is an independent navigation interface, not a statement that all manuals are open source or licensed under a single license.
+Third-party vendor PDF documents retain their respective publisher copyrights and distribution terms.
