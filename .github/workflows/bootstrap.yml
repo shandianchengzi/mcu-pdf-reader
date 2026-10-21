@@ -1,0 +1,32 @@
+name: Install MCU PDF Reader site (bootstrap)
+on:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/bootstrap.yml'
+      - '.bootstrap/site.tar.xz.b64'
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  install:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Expand project sources
+        run: |
+          set -euo pipefail
+          base64 -d .bootstrap/site.tar.xz.b64 | xz -d | tar -xvf -
+          node --check site/app.js
+          python -m py_compile scripts/import_manuals.py
+          python scripts/import_manuals.py --verify-only
+      - name: Commit generated site and one-time copy workflow
+        run: |
+          set -euo pipefail
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          rm -rf .bootstrap
+          rm -f .github/workflows/bootstrap.yml
+          git add -A
+          git commit -m "Create PDF reader and single-run manual import workflow"
+          git push origin HEAD:main
