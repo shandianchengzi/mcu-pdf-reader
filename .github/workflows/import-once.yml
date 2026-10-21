@@ -27,7 +27,7 @@ jobs:
         uses: actions/checkout@v4
         with:
           repository: IoTS-P/LibAFL-Emulator
-          ref: gemu-v2
+          ref: 987fafaa42f9937006d3e9226134f5c78dc5aeb6
           token: ${{ secrets.MANUALS_SOURCE_TOKEN }}
           path: source
           sparse-checkout: |
