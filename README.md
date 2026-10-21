@@ -10,7 +10,7 @@ The site provides chip-name search, active/archived filters, embedded PDF viewin
 
 `source-manuals.tsv` records the 22 PDF files (17 active, 5 archived) found at source commit `987fafaa42f9937006d3e9226134f5c78dc5aeb6`, including exact sizes and Git blob hashes. Files go into `site/pdfs/`, preserving the original subdirectories. `site/manuals.json` marks each document as available only after its original bytes have been copied and verified.
 
-**Current status:** 1 PDF has been copied and verified; the remaining 21 entries are catalogued but unavailable. The website displays the actual availability instead of broken file links.
+**Current status:** All 22 PDF files have been copied and verified against the source inventory (17 active and 5 archived; 293,235,937 bytes total). The reading site serves these PDF copies directly from `site/pdfs/`.
 
 ## Copy from a local checkout
 
