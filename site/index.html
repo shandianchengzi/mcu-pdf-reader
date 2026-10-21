@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#172438">
+  <meta name="description" content="MCU 芯片参考手册 PDF 在线阅读器，支持芯片检索、原生 PDF 搜索、页码跳转与下载。">
+  <title>MCU PDF Reader · 芯片参考手册</title>
+  <link rel="stylesheet" href="./style.css">
+  <script src="./app.js" defer></script>
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar" id="sidebar" aria-label="手册导航">
+      <div class="brand"><div class="brand-logo" aria-hidden="true">▣</div><div><div class="brand-name">MCU <span>PDF Reader</span></div><div class="brand-subtitle">Reference Manual Library</div></div></div>
+      <div class="library-heading"><div class="eyebrow">DOCUMENT LIBRARY</div><div class="library-title">芯片参考手册</div><p class="library-description">从 LibAFL-Emulator 拷贝的独立 PDF 副本。</p></div>
+      <label class="search-field"><span class="search-icon" aria-hidden="true">⌕</span><span class="sr-only">搜索芯片或手册</span><input id="search" type="search" placeholder="搜索芯片、型号、文件名…" autocomplete="off"><kbd>/</kbd></label>
+      <div class="filters" role="group" aria-label="手册分类"><button type="button" class="filter active" data-filter="active" aria-pressed="true">现用 <span id="active-count">—</span></button><button type="button" class="filter" data-filter="archived" aria-pressed="false">归档 <span id="archived-count">—</span></button><button type="button" class="filter" data-filter="all" aria-pressed="false">全部</button></div>
+      <div class="list-heading"><span id="list-caption">正在读取目录</span><span id="visible-count"></span></div>
+      <nav id="manual-list" class="manual-list" aria-label="PDF 手册列表"><div class="loading-note">正在加载手册目录…</div></nav>
+      <div class="sidebar-footer"><span class="status-dot"></span><span id="sync-status">静态手册库 · 不自动同步</span><a href="https://github.com/shandianchengzi/mcu-pdf-reader" target="_blank" rel="noopener noreferrer">GitHub ↗</a></div>
+    </aside>
+    <main class="main-pane">
+      <header class="toolbar"><button type="button" class="icon-button mobile-menu" id="menu-button" aria-label="显示手册目录" aria-expanded="false">☰</button><div class="breadcrumb"><span>Library</span><span class="chevron">/</span><strong id="crumb-title">选择手册</strong></div><div class="toolbar-actions"><button type="button" id="copy-link" class="small-button" disabled title="复制本页阅读链接">分享链接</button><a id="open-tab" class="small-button" aria-disabled="true" tabindex="-1">新窗口打开 ↗</a></div></header>
+      <div id="empty-state" class="empty-state"><div class="empty-illustration" aria-hidden="true"><span>PDF</span><i></i><i></i><i></i></div><div class="eyebrow">REFERENCE DOCUMENTATION</div><h1>从左侧选择一本参考手册</h1><p id="empty-message">按芯片型号搜索，直接在浏览器中阅读 PDF。</p><div class="empty-hint">使用浏览器自带 PDF 工具栏进行全文搜索、缩放和打印。</div></div>
+      <section id="reader" class="reader" hidden aria-label="PDF 阅读器"><div class="document-header"><div class="document-text"><div class="eyebrow" id="document-type">REFERENCE MANUAL</div><h1 id="document-title"></h1><p id="document-meta"></p></div><div class="document-actions"><label class="page-input">跳至页码 <input id="page-number" type="number" min="1" step="1" placeholder="1" inputmode="numeric"></label><button id="go-page" type="button" class="primary-button">跳转</button><a id="download-file" class="download-button" download>下载 PDF ↓</a></div></div><div class="reader-notice" id="reader-notice">提示：可使用 PDF 自带的搜索、目录及缩放功能。页码跳转会重新定位文档。</div><div class="pdf-frame"><iframe id="pdf-frame" title="芯片参考手册 PDF 阅读区" loading="eager"></iframe><div class="fallback">如果浏览器无法内嵌显示 PDF，可使用上方「新窗口打开」或「下载 PDF」。</div></div></section>
+    </main>
+  </div>
+  <div id="mobile-backdrop" class="mobile-backdrop" hidden></div>
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+</body>
+</html>

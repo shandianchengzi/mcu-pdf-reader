@@ -1,0 +1,203 @@
+{
+  "schema_version": 1,
+  "manuals": [
+    {
+      "id": "EFM32G/EFM32G.pdf",
+      "filename": "EFM32G.pdf",
+      "archived": false,
+      "path": "pdfs/EFM32G/EFM32G.pdf",
+      "size": 7478727,
+      "git_sha": "e47f6012747295989158caa51b52dc50cd39bc90",
+      "available": false
+    },
+    {
+      "id": "NXP88MW320-322/NXP88MW320-322.pdf",
+      "filename": "NXP88MW320-322.pdf",
+      "archived": false,
+      "path": "pdfs/NXP88MW320-322/NXP88MW320-322.pdf",
+      "size": 4005695,
+      "git_sha": "4a59dca91ce1137f379509395e06b381b01c1f27",
+      "available": false
+    },
+    {
+      "id": "RA4W1/RA4W1.pdf",
+      "filename": "RA4W1.pdf",
+      "archived": false,
+      "path": "pdfs/RA4W1/RA4W1.pdf",
+      "size": 17186161,
+      "git_sha": "a778a331dee48f5b3835101505b189321abaa53f",
+      "available": false
+    },
+    {
+      "id": "archived/EFM32LG/EFM32LG.pdf",
+      "filename": "EFM32LG.pdf",
+      "archived": true,
+      "path": "pdfs/archived/EFM32LG/EFM32LG.pdf",
+      "size": 13324955,
+      "git_sha": "fd005263dd0c1f633417666e2e9ddbc9fd756a94",
+      "available": false
+    },
+    {
+      "id": "archived/WL5/WL5.pdf",
+      "filename": "WL5.pdf",
+      "archived": true,
+      "path": "pdfs/archived/WL5/WL5.pdf",
+      "size": 25088551,
+      "git_sha": "47d3be416bd2ad654c75b6ac422bd13f07970827",
+      "available": false
+    },
+    {
+      "id": "archived/f469+f479/f469+f479.pdf",
+      "filename": "f469+f479.pdf",
+      "archived": true,
+      "path": "pdfs/archived/f469+f479/f469+f479.pdf",
+      "size": 20042868,
+      "git_sha": "c9143e1e32177e29462ec40ff4d670863e024e4d",
+      "available": false
+    },
+    {
+      "id": "archived/l152/l152.pdf",
+      "filename": "l152.pdf",
+      "archived": true,
+      "path": "pdfs/archived/l152/l152.pdf",
+      "size": 14533538,
+      "git_sha": "c9517c66b8211f47c8235d9286e696720e19ac56",
+      "available": false
+    },
+    {
+      "id": "archived/l431-l432/l431-l432.pdf",
+      "filename": "l431-l432.pdf",
+      "archived": true,
+      "path": "pdfs/archived/l431-l432/l431-l432.pdf",
+      "size": 18943074,
+      "git_sha": "13368685275ba25cea6a23c4ba9318b9ef003348",
+      "available": false
+    },
+    {
+      "id": "f100/rm0041-stm32f100.pdf",
+      "filename": "rm0041-stm32f100.pdf",
+      "archived": false,
+      "path": "pdfs/f100/rm0041-stm32f100.pdf",
+      "size": 8498335,
+      "git_sha": "643e12ed7a8aed46ae1cd3e1af9221db48017b32",
+      "available": false
+    },
+    {
+      "id": "f103/cd00283419-stm32f10xxx-flash-memory-microcontrollers-stmicroelectronics.pdf",
+      "filename": "cd00283419-stm32f10xxx-flash-memory-microcontrollers-stmicroelectronics.pdf",
+      "archived": false,
+      "path": "pdfs/f103/cd00283419-stm32f10xxx-flash-memory-microcontrollers-stmicroelectronics.pdf",
+      "size": 302996,
+      "git_sha": "b5f854ef63853631358eff0fa8a91eb620a32780",
+      "available": false
+    },
+    {
+      "id": "f103/f103.pdf",
+      "filename": "f103.pdf",
+      "archived": false,
+      "path": "pdfs/f103/f103.pdf",
+      "size": 7988886,
+      "git_sha": "d0fc1fac0b76a801f0d56528a2dd482647dc8484",
+      "available": false
+    },
+    {
+      "id": "f3/f3.pdf",
+      "filename": "f3.pdf",
+      "archived": false,
+      "path": "pdfs/f3/f3.pdf",
+      "size": 13654055,
+      "git_sha": "00590e138c0e0877a84b1cbdf33d15041ebb4efb",
+      "available": false
+    },
+    {
+      "id": "f429/f429.pdf",
+      "filename": "f429.pdf",
+      "archived": false,
+      "path": "pdfs/f429/f429.pdf",
+      "size": 22534143,
+      "git_sha": "8ed39b1b52692e94fe4f84f7203c5d89c7711169",
+      "available": false
+    },
+    {
+      "id": "f446/f446.pdf",
+      "filename": "f446.pdf",
+      "archived": false,
+      "path": "pdfs/f446/f446.pdf",
+      "size": 16279423,
+      "git_sha": "ebde54c9fa28d9a11a052e5fbbea9244fa71a7cc",
+      "available": false
+    },
+    {
+      "id": "k64/k64.pdf",
+      "filename": "k64.pdf",
+      "archived": false,
+      "path": "pdfs/k64/k64.pdf",
+      "size": 10057808,
+      "git_sha": "fe81d874b97eb164482c550b209d66cb33406923",
+      "available": false
+    },
+    {
+      "id": "l475/l475.pdf",
+      "filename": "l475.pdf",
+      "archived": false,
+      "path": "pdfs/l475/l475.pdf",
+      "size": 22295742,
+      "git_sha": "81b345f960216328010121628103d7e121a0581e",
+      "available": false
+    },
+    {
+      "id": "max78000/ug-7456-max78000-user-guide.pdf",
+      "filename": "ug-7456-max78000-user-guide.pdf",
+      "archived": false,
+      "path": "pdfs/max78000/ug-7456-max78000-user-guide.pdf",
+      "size": 5950557,
+      "git_sha": "12fcb8c5d622a949da2517f4efc8248d5a1f1c9b",
+      "available": false
+    },
+    {
+      "id": "nRF52832/nRF52832.pdf",
+      "filename": "nRF52832.pdf",
+      "archived": false,
+      "path": "pdfs/nRF52832/nRF52832.pdf",
+      "size": 5158352,
+      "git_sha": "9e821f609bace6c6c7a8fa9d79a1a455c71216cc",
+      "available": false
+    },
+    {
+      "id": "nRF52840/nRF52840.pdf",
+      "filename": "nRF52840.pdf",
+      "archived": false,
+      "path": "pdfs/nRF52840/nRF52840.pdf",
+      "size": 18579674,
+      "git_sha": "b4494916e36f8f6e9756d17a2e66f4ea62db98f5",
+      "available": false
+    },
+    {
+      "id": "sam3/sam3.pdf",
+      "filename": "sam3.pdf",
+      "archived": false,
+      "path": "pdfs/sam3/sam3.pdf",
+      "size": 6108708,
+      "git_sha": "f9c7ab0c6bf6fd0d17b1e964d2b8274d64fd1822",
+      "available": false
+    },
+    {
+      "id": "sam4e/sam4e.pdf",
+      "filename": "sam4e.pdf",
+      "archived": false,
+      "path": "pdfs/sam4e/sam4e.pdf",
+      "size": 6438988,
+      "git_sha": "db1f7e37f4c12e0cdaac283a778bb0e5227bf300",
+      "available": false
+    },
+    {
+      "id": "wl5x/wl5x.pdf",
+      "filename": "wl5x.pdf",
+      "archived": false,
+      "path": "pdfs/wl5x/wl5x.pdf",
+      "size": 28784701,
+      "git_sha": "18824c0cd7d5d4dba94dddfe5e9ffce852c7ffda",
+      "available": false
+    }
+  ]
+}
