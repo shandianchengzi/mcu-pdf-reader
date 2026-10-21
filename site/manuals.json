@@ -89,7 +89,7 @@
       "path": "pdfs/f103/cd00283419-stm32f10xxx-flash-memory-microcontrollers-stmicroelectronics.pdf",
       "size": 302996,
       "git_sha": "b5f854ef63853631358eff0fa8a91eb620a32780",
-      "available": false
+      "available": true
     },
     {
       "id": "f103/f103.pdf",
